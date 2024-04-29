@@ -15,9 +15,94 @@ let toggle = document.querySelector(".toggle");
 let navigation = document.querySelector(".navigation");
 let main = document.querySelector(".main");
 
-console.log(navigation)
-
 toggle.onclick = function() {
     navigation.classList.toggle("active");
     main.classList.toggle("active");
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Lấy ra tất cả các thẻ a
+    const links = document.querySelectorAll('.ajax-link');
+
+    // Lặp qua từng thẻ a và thêm sự kiện click
+    links.forEach(function(link) {
+        link.addEventListener('click', function(event) {
+            // Xóa class active khỏi tất cả các thẻ a
+            links.forEach(function(l) {
+                l.classList.remove('hovered');
+            });
+
+            // Thêm class active cho thẻ a được click
+            link.classList.add('hovered');
+
+            // Lưu trạng thái vào Local Storage
+            localStorage.setItem('activeLink', link.getAttribute('id'));
+        });
+    });
+
+    // Kiểm tra xem có trạng thái được lưu trong Local Storage không
+    const activeLinkId = localStorage.getItem('activeLink');
+    const activeLink = document.getElementById(activeLinkId);
+
+    if (activeLinkId) {
+        if (activeLink) {
+            activeLink.parentNode.classList.add('hovered');
+        }
+    }
+
+    var quantityElements = document.querySelectorAll('.quantity-value');
+    quantityElements.forEach(function(element) {
+        var quantity = parseInt(element.textContent);
+        if (quantity < 10) {
+            element.style.color = 'red';
+        }
+    });
+
+    $(document).ready(function() {
+        // Khởi tạo biến trạng thái mặc định là giảm dần
+        var sortDescending = true;
+    
+        $('.sort-icon').click(function() {
+            // Lấy giá trị của thuộc tính data-name của biểu tượng đã nhấn
+            var columnName = $(this).data('name');
+            
+            // Sắp xếp sản phẩm và hiển thị lại
+            sortProducts(columnName, sortDescending);
+    
+            // Đảo ngược trạng thái sắp xếp cho lần nhấn tiếp theo
+            sortDescending = !sortDescending;
+        });
+    });
+    
+    function sortProducts(columnName, sortDescending) {
+        // Lấy tất cả các hàng của bảng sản phẩm
+        var rows = $('#ketqua').find('tr').get();
+    
+        // Sắp xếp các hàng dựa trên giá trị của cột đã chọn
+        rows.sort(function(a, b) {
+            var valueA = $(a).find('td[data-name="' + columnName + '"]').text().trim();
+            var valueB = $(b).find('td[data-name="' + columnName + '"]').text().trim();
+    
+            // Chuyển đổi giá trị sang số để so sánh
+            valueA = parseFloat(valueA.replace('đ', '').replace(',', '').trim());
+            valueB = parseFloat(valueB.replace('đ', '').replace(',', '').trim());
+    
+            // So sánh giá trị số từ lớn đến bé hoặc từ bé đến lớn tùy thuộc vào trạng thái sắp xếp
+            if (sortDescending) {
+                return valueB - valueA; // Giảm dần
+            } else {
+                return valueA - valueB; // Tăng dần
+            }
+        });
+    
+        // Xóa các hàng hiện tại trong bảng
+        $('#ketqua').empty();
+    
+        // Thêm các hàng đã sắp xếp vào bảng
+        $.each(rows, function(index, row) {
+            $('#ketqua').append(row);
+        });
+    }
+});
+
+    

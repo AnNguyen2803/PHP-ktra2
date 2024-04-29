@@ -12,11 +12,12 @@
             $stmt->bind_param("ss", $name, $pass);
             $stmt->execute();
             $result = $stmt->get_result();
-            
-            // Kiểm tra số hàng trả về
+            $row = $result->fetch_assoc();
+
             if($result->num_rows > 0){
-                // Đăng nhập thành công, chuyển hướng tới trang index.html
-                header("location: /ktra2/index.html");
+                $_SESSION['name'] = $row['taikhoan'];
+                $_SESSION['quyen'] = $row['quyen'];
+                header("location: /ktra2/index.php");
             } else {
                 // Đăng nhập thất bại, chuyển hướng tới trang đăng nhập
                 header("location: /ktra2/assets/pages/login.html");
