@@ -5,47 +5,31 @@
                 <span class="icon">
                     <ion-icon name="logo-apple"></ion-icon>
                 </span>
-                <span class="title">Brand name</span>
+                <span class="title">This is logo</span>
             </a>
         </li>
         <li>
-            <a href="index.php?home" id = "home" class="ajax-link" data-url="">
+            <a href="index.php?id=home" id = "home" class="ajax-link" data-url="">
                 <span class="icon">
                     <ion-icon name="home-outline"></ion-icon>
                 </span>
-                <span class="title">Dashboard</span>
+                <span class="title">Tổng quan</span>
             </a>
         </li>
         <li>
-            <a href="index.php?customer" class="ajax-link" data-url="" id = "customer">
+            <a href="index.php?id=employee" class="ajax-link" data-url="" id = "customer">
                 <span class="icon">
                     <ion-icon name="people-outline"></ion-icon>
                 </span>
-                <span class="title">Customers</span>
+                <span class="title">Nhân viên</span>
             </a>
         </li>
         <li>
-            <a href="index.php?product" class="ajax-link" data-url="" id ="products">
+            <a href="index.php?id=orders" class="ajax-link" data-url="" id ="products">
                 <span class="icon" >
                     <ion-icon name="albums-outline"></ion-icon>
                 </span>
-                <span class="title">Products</span>
-            </a>
-        </li>
-        <li>
-            <a href="index.php?setting" class="ajax-link" data-url="" id = "settings">
-                <span class="icon" >
-                    <ion-icon name="settings-outline"></ion-icon>
-                </span>
-                <span class="title">Settings</span>
-            </a>
-        </li>
-        <li>
-            <a href="">
-                <span class="icon">
-                    <ion-icon name="lock-closed-outline"></ion-icon>
-                </span>
-                <span class="title">Password</span>
+                <span class="title">Hóa đơn</span>
             </a>
         </li>
         <li>

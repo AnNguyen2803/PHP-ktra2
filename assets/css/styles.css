@@ -271,7 +271,7 @@ body{
     width: 100%;
     padding: 20px;
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1.5fr 2fr;
     gap: 30px;
 }
 .chartsBx .chart{
@@ -282,7 +282,6 @@ body{
     box-shadow: 0 7px 25px rgba(0, 0, 0, .08);
     border-radius: 20px;
     border: 1px solid var(--blue);
-
 }
 
 /* ================= Order Details List ============== */
@@ -454,7 +453,7 @@ body{
     border: 1px solid #b0b0b0;
     border-radius: 3px;
     display: inline-block;
-    width: 75px;
+    width: 150px;
     padding: 0rem .5rem;
     margin-right: .8rem;
     color: #666;
