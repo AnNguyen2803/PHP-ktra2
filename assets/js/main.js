@@ -50,11 +50,17 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    var quantityElements = document.querySelectorAll('.quantity-value');
-    quantityElements.forEach(function(element) {
-        var quantity = parseInt(element.textContent);
-        if (quantity < 10) {
-            element.style.color = 'red';
+    var inputs = document.querySelectorAll(".quantity-value");
+        
+    inputs.forEach(function(input) {
+        if (parseInt(input.value) < 10) {
+            Object.assign(input.style, {
+                color: "#FFF",
+                backgroundColor: "#FF0000"
+            })
+
+        } else {
+            input.style.color = "";
         }
     });
 
@@ -80,18 +86,26 @@ document.addEventListener("DOMContentLoaded", function() {
     
         // Sắp xếp các hàng dựa trên giá trị của cột đã chọn
         rows.sort(function(a, b) {
-            var valueA = $(a).find('td[data-name="' + columnName + '"]').text().trim();
-            var valueB = $(b).find('td[data-name="' + columnName + '"]').text().trim();
+            var valueA, valueB;
     
-            // Chuyển đổi giá trị sang số để so sánh
-            valueA = parseFloat(valueA.replace('đ', '').replace(',', '').trim());
-            valueB = parseFloat(valueB.replace('đ', '').replace(',', '').trim());
-    
-            // So sánh giá trị số từ lớn đến bé hoặc từ bé đến lớn tùy thuộc vào trạng thái sắp xếp
-            if (sortDescending) {
-                return valueB - valueA; // Giảm dần
+            // Kiểm tra trường hợp là input thì thực hiện lấy ra các thẻ input
+            if ($(a).find('td[data-name="' + columnName + '"] input').length > 0) {
+                valueA = $(a).find('td[data-name="' + columnName + '"] input').val().trim();
+                valueB = $(b).find('td[data-name="' + columnName + '"] input').val().trim();
             } else {
-                return valueA - valueB; // Tăng dần
+                valueA = $(a).find('td[data-name="' + columnName + '"]').text().trim();
+                valueB = $(b).find('td[data-name="' + columnName + '"]').text().trim();
+            }
+    
+            // Loại bỏ các kí tự không phải số và chuyển đổi thành số nguyên
+            var numberA = parseInt(valueA.replace(/\D/g, ''), 10);
+            var numberB = parseInt(valueB.replace(/\D/g, ''), 10);
+    
+            // So sánh số nguyên từ lớn đến bé hoặc từ bé đến lớn tùy thuộc vào trạng thái sắp xếp
+            if (sortDescending) {
+                return numberB - numberA; // Giảm dần
+            } else {
+                return numberA - numberB; // Tăng dần
             }
         });
     
@@ -103,6 +117,7 @@ document.addEventListener("DOMContentLoaded", function() {
             $('#ketqua').append(row);
         });
     }
+   
 });
 
     

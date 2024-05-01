@@ -22,15 +22,7 @@
                 <button type="submit" id="btnLoc">Lọc</button>
             </form>
         </div>
-
-        <div class="browse">
-            <input type="search" placeholder="Search" class="record-search">
-            <select name="" id="">
-                <option value="">Status</option>
-            </select>
-        </div>
     </div>
-
     <div>
         
         <table width="100%">
@@ -40,7 +32,7 @@
                     <th>Tên sản phẩm</th>
                     <th><ion-icon name="chevron-expand-outline" data-name = "gianiemyet" class="sort-icon"></ion-icon> Giá</th>
                     <th><ion-icon name="chevron-expand-outline" data-name = "soluongton" class="sort-icon"></ion-icon> Số lượng</th>
-                    <th><ion-icon name="chevron-expand-outline" data-name = "maloai" class="sort-icon"></ion-icon> Loại sản phẩm</th>
+                    <th> Loại sản phẩm</th>
                     <th>Hành Động</th>
                 </tr>
             </thead>
@@ -61,34 +53,36 @@
                     while($row = $result->fetch_assoc()){
                 ?>
                 <tr>
-                    <td><?= $row['masp'] ?></td>
-                    <td data-name = "tensp">
-                        <div class="client">
-                            <div class="client-img bg-img" style="background-image: url(img/3.jpeg)"></div>
-                            <div class="client-info">
-                                <h4><?=$row['tensp'] ?></h4>
+                    <form action = "" method = "post">
+                        <td><?= $row['masp'] ?></td>
+                        <td data-name = "tensp">
+                            <div class="client">
+                                <div class="client-img bg-img" style="background-image: url(img/3.jpeg)"></div>
+                                <div class="client-info">
+                                    <h4><?=$row['tensp'] ?></h4>
+                                </div>
                             </div>
-                        </div>
-                    </td>
-                    <td data-name = "gianiemyet"><?=$row['gianiemyet'] ?>đ</td>
-                    <td data-name = "soluongton">
-                        <span class="quantity-value"><?= $row['soluongton'] ?></span>
-                    </td>
-                    <td>
-                        <?php 
-                            if($row['maloai'] == 1) {
-                                echo "Phone";
-                            } elseif ($row['maloai'] == 2){
-                                echo "Laptop";
-                            } else{
-                                echo "Phụ kiện";
-                            }
-                        ?>
-                    </td>
-                    <td>
-                        <a href="">Cập nhật</a>
-                        <a href="">Xóa</a>
-                    </td>
+                        </td>
+                        <td data-name = "gianiemyet"><?=number_format($row['gianiemyet'], 0, '.', '.') . 'đ' ?></td>
+                        <td data-name = "soluongton">
+                            <input type = "number" class="quantity-value" value = <?= $row['soluongton'] ?> min = "0" name = "quantity"/>
+                        </td>
+                        <td>
+                            <?php 
+                                if($row['maloai'] == 1) {
+                                    echo "Phone";
+                                } elseif ($row['maloai'] == 2){
+                                    echo "Laptop";
+                                } else{
+                                    echo "Phụ kiện";
+                                }
+                            ?>
+                        </td>
+                        <td>
+                            <input type="hidden" value = "<?= $row['masp'] ?>" name = "masp">
+                            <button id = "updateQuantity" type = "submit" name = "update_quantity">Cập nhật số lượng</button>
+                        </td>
+                    </form>
                 </tr>
                 <?php }?>
             </tbody>

@@ -12,6 +12,13 @@
         session_destroy();
         header("location: /ktra2/assets/pages/login.html");
     }
+    if(isset($_POST['update_quantity'])) {
+        $masp = $_POST['masp'];
+        $new_quantity = $_POST['quantity'];
+
+        $upd_quantity = "UPDATE `sanpham` SET soluongton = '$new_quantity' WHERE masp = '$masp'";
+        $connect->query($upd_quantity);
+    } 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,9 +29,9 @@
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
-    <!-- ====================== Navigation ================ -->
-
+    
     <div class="container">
+        <!-- ====================== Navigation ================ -->
         <?php include("./assets/pages/navigation.php")?>
 
         <!-- ================ Main =============== -->
@@ -36,7 +43,7 @@
                 } 
             ?>
 
-            <!--  ================Order Details List ================= -->
+            <!--  ================Định tuyến cấu trúc trang ================= -->
             <?php include("route.php") ?>
         </div>
     </div>

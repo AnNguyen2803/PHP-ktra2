@@ -445,6 +445,7 @@ body{
 .add span {
     display: inline-block;
     margin-right: 10px;
+    margin-bottom: 10px;
     font-size: 16px;
     color: #666;
 }
@@ -486,7 +487,7 @@ table thead th:first-child {
 }
 table thead th {
     padding: 1rem 0rem;
-    text-align: left;
+    text-align: center;
     color: #444;
     background-color: #ccc;
 }
@@ -508,6 +509,7 @@ table tbody td:nth-child(6){
 table tbody td {
     padding: 1rem 0rem;
     color: #444;
+    text-align: center;
 }
 table tbody tr:not(:last-child) {
     border-bottom: 1px solid #dee2e8;
@@ -519,6 +521,19 @@ table tbody td a{
 }
 table tbody td a:hover{
     color: var(--main);
+}
+#ketqua td input{
+    width: 90px;
+    height: 20px;
+    padding: 15px 10px;
+}
+#updateQuantity{
+    background: #fff;
+    padding: 5px;
+    cursor: pointer;
+}
+#updateQuantity:hover{
+    background-color: #1795ce;
 }
 
 /* ==================================Login page============================== */
