@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `chitietgiaodich` (
   KEY `fk_nv_gd` (`manv`),
   KEY `fk_ncc_gd` (`mancc`),
   KEY `fk_sp_gd` (`masp`)
-) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `chitietgiaodich`
@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `danhmuc` (
   `maloai` int NOT NULL AUTO_INCREMENT,
   `tenloai` varchar(100) NOT NULL,
   PRIMARY KEY (`maloai`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `danhmuc`
@@ -109,7 +109,7 @@ CREATE TABLE IF NOT EXISTS `khuvuc` (
   `makv` int NOT NULL AUTO_INCREMENT,
   `khuvuc` varchar(50) NOT NULL,
   PRIMARY KEY (`makv`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `khuvuc`
@@ -132,7 +132,7 @@ CREATE TABLE IF NOT EXISTS `nhacungcap` (
   `mancc` int NOT NULL AUTO_INCREMENT,
   `tenncc` varchar(500) NOT NULL,
   PRIMARY KEY (`mancc`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `nhacungcap`
@@ -160,7 +160,7 @@ CREATE TABLE IF NOT EXISTS `nhanvien` (
   `ID_tk` int NOT NULL,
   PRIMARY KEY (`manv`),
   KEY `fk_ID_tk` (`ID_tk`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `nhanvien`
@@ -188,7 +188,7 @@ CREATE TABLE IF NOT EXISTS `sanpham` (
   `maloai` int NOT NULL,
   PRIMARY KEY (`masp`),
   KEY `fk_sp_loai` (`maloai`)
-) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 ;
 
 --
 -- Dumping data for table `sanpham`
@@ -240,7 +240,7 @@ CREATE TABLE IF NOT EXISTS `taikhoan` (
   `quyen` int NOT NULL DEFAULT '0',
   `hoatdong` int NOT NULL DEFAULT '1',
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 ;
 
 --
 -- Dumping data for table `taikhoan`

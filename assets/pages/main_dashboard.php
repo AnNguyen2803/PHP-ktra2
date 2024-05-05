@@ -13,7 +13,11 @@
                         $result1 = $stmt1->get_result();
                         while($fetch_dm = $result1->fetch_assoc()){
                             // Kiểm tra xem giá trị của option có trùng với giá trị đã được chọn trước đó hay không
-                            $selected = ($fetch_dm['maloai'] == $_POST['maloai']) ? "selected" : "";
+                            if ($fetch_dm['maloai'] == $_POST['maloai']) {
+                                $selected = "selected";
+                            } else {
+                                $selected = "";
+                            }
                     ?>
                     <!-- Thêm thuộc tính selected nếu giá trị của option trùng với giá trị đã chọn trước đó -->
                     <option value="<?= $fetch_dm['maloai'] ?>" <?= $selected ?>><?= $fetch_dm['tenloai'] ?></option>

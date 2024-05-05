@@ -17,10 +17,10 @@
             if($result->num_rows > 0){
                 $_SESSION['name'] = $row['taikhoan'];
                 $_SESSION['quyen'] = $row['quyen'];
-                header("location: /ktra2/index.php");
+                header("location: ../../../index.php");
             } else {
                 // Đăng nhập thất bại, chuyển hướng tới trang đăng nhập
-                header("location: /ktra2/assets/pages/login.html");
+                header("location: ../../pages/login.html");
             }
         }
     }
